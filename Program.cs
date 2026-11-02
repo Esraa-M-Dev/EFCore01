@@ -1,10 +1,15 @@
-﻿namespace EFCoreAssignment01
+﻿using EFCoreAssignment01.Contexts;
+using Microsoft.EntityFrameworkCore;
+
+namespace EFCoreAssignment01
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+           using BookStoreDbContext context = new BookStoreDbContext();
+            await context.Database.MigrateAsync(); //Apply migration
+            Console.WriteLine("Database created succesfully");
         }
     }
 }
